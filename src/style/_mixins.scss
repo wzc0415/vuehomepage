@@ -1,0 +1,22 @@
+@mixin bordered($width, $color) {
+  border: $width solid $color;
+}
+
+@mixin font($size, $weight: normal, $color: inherit) {
+  font-size: $size;
+  line-height: 1;
+  font-weight: $weight;
+  color: $color;
+}
+@mixin flex(
+  $direction: row,
+  $wrap: nowrap,
+  $justify-content: center,
+  $align-items: center
+) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}

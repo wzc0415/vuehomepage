@@ -1,0 +1,74 @@
+@import "mixins";
+
+.section-container {
+  padding: 20px 12px;
+  @include flex();
+  width: 100%;
+  min-height: 100px;
+
+  .section-title {
+    font-size: 3.25rem;
+    width: 100%;
+    letter-spacing: -0.1rem;
+    margin: 3rem 0 !important;
+    &:after {
+      display: block;
+      content: "";
+      height: 2px;
+      background: linear-gradient(135deg, #23ace2 0, #ffffff 100%);
+      position: relative;
+      top: 12px;
+      left: 0px;
+      max-width: 120px;
+    }
+  }
+
+  .section-content-no-flex {
+    display: block !important;
+  }
+
+  .section-content {
+    min-height: 100px;
+    @include flex();
+    @media screen and (max-width: 576px) {
+      width: 100%;
+    }
+    @media screen and (min-width: 768px) {
+      width: 500px;
+    }
+    @media screen and (min-width: 992px) {
+      width: 700px;
+    }
+    @media screen and (min-width: 1440px) {
+      width: 1000px;
+    }
+
+    > .section-description {
+      margin-top: 20px;
+      .content-img{
+        width: 20%;
+      }
+      .content{
+        width: 80%;
+      }
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin-top: 4px;
+      margin-bottom: 2px;
+    }
+  }
+}

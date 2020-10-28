@@ -1,0 +1,72 @@
+//$currentTheme:
+$themes: (
+        dark: (
+          //字体
+                font_color1: #c8c8c8,
+                font_color2: white,
+          //背景
+                background_color1: #1b2531,
+                background_color2: #283142,
+                background_color3: #801aef,
+                background_color4: #323e4e,
+          //边框
+                border_color1: #3d414a,
+          //box-shadow
+                box-shadow1:(0px 0px 13px 12px #801aef, 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12))
+        ),
+        light: (
+          //字体
+                font_color1: #414141,
+                font_color2: white,
+          //背景
+                background_color1: #fff,
+                background_color2: #f0f2f5,
+                background_color3: #0482ff,
+                background_color4: #2674e7,
+          //边框
+                border_color1: #3d414a,
+          //box-shadow
+                box-shadow1:(0px 0px 13px 12px #0482ff, 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12))
+        )
+);
+
+@mixin themeify {
+  @each $theme-name, $theme-map in $themes {
+    $theme-map: $theme-map !global;
+    [data-theme='#{$theme-name}'] & {
+      @content;
+    }
+  }
+}
+
+//声明一个根据Key获取颜色的function
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+//获取背景颜色
+@mixin background_color($color) {
+  @include themeify {
+    background-color: themed($color) !important;
+  }
+}
+
+//获取字体颜色
+@mixin font_color($color) {
+  @include themeify {
+    color: themed($color) !important;
+  }
+}
+//box-shadow
+@mixin box_shadow($color) {
+  @include themeify {
+    box-shadow: themed($color) !important;
+  }
+}
+
+//获取边框颜色
+@mixin border_color($color) {
+  @include themeify {
+    border-color: themed($color) !important;
+  }
+}
